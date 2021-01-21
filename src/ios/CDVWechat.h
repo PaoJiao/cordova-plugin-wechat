@@ -23,6 +23,8 @@ enum  CDVWechatSharingType {
 
 @interface CDVWechat:CDVPlugin <WXApiDelegate>
 
++ (instancetype)sharedInstance;
+
 @property (nonatomic, strong) NSString *currentCallbackId;
 @property (nonatomic, strong) NSString *wechatAppId;
 

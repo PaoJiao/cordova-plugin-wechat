@@ -10,7 +10,23 @@
 
 static int const MAX_THUMBNAIL_SIZE = 320;
 
+//static CDVWechat * instance = nil;
+
 @implementation CDVWechat
+
+#pragma mark - LifeCycle
++(instancetype)sharedInstance {
+    return [[CDVWechat alloc] init];
+}
+
+-(instancetype)init {
+    static dispatch_once_t onceToken;
+    static CDVWechat *instance;
+    dispatch_once(&onceToken, ^{
+        instance = [super init];
+    });
+    return instance;
+}
 
 #pragma mark "API"
 - (void)pluginInitialize {
